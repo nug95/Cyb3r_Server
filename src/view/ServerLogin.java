@@ -1,42 +1,54 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import model.Server;
+import model.User;
 
 public class ServerLogin extends JFrame {
 
+	private static final long serialVersionUID=1L;
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ServerLogin frame = new ServerLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ServerLogin() {
+	private JTextField tf_username;
+	private JPasswordField tf_password;
+	
+	public ServerLogin(Server cyb3r_sv) {
+		setTitle(cyb3r_sv.getProgram_title()+" - Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		tf_username = new JTextField();
+		tf_username.setBounds(175, 75, 86, 20);
+		contentPane.add(tf_username);
+		tf_username.setColumns(10);
+		
+		tf_password = new JPasswordField();
+		tf_password.setBounds(175, 103, 86, 20);
+		contentPane.add(tf_password);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnLogin.setBounds(175, 134, 89, 23);
+		contentPane.add(btnLogin);
+		setResizable(false);
+		
+		
+		
 	}
-
 }
